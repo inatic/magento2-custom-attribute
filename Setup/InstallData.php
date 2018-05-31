@@ -1,6 +1,6 @@
 <?php
 
-namespace Devchannel\CustomAttribute\Setup;
+namespace Inatics\CustomAttribute\Setup;
 
 use Magento\Customer\Api\AddressMetadataInterface;
 use Magento\Eav\Setup\EavSetup;
@@ -11,15 +11,10 @@ use Magento\Eav\Model\Config;
 
 /**
  * Class InstallData
- * @package     Devchannel\CustomAttribute\Setup
+ * @package     Inatics\CustomAttribute\Setup
  */
 class InstallData implements InstallDataInterface
 {
-    /**
-     * Attribute Code of the Custom Attribute
-     */
-    const CUSTOM_ATTRIBUTE_CODE = 'custom';
-
     /**
      * @var EavSetup
      */
@@ -46,24 +41,23 @@ class InstallData implements InstallDataInterface
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-
-        $this->eavSetup->addAttribute(
+	$this->eavSetup->addAttribute(
            AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
-            self::CUSTOM_ATTRIBUTE_CODE,
+            'mobile',
             [
-                'label' => 'Custom',
+                'label' => 'Mobile Phone Number',
                 'input' => 'text',
                 'visible' => true,
                 'required' => false,
-                'position' => 150,
-                'sort_order' => 150,
+                'position' => 121,
+                'sort_order' => 121,
                 'system' => false
             ]
         );
 
         $customAttribute = $this->eavConfig->getAttribute(
             AddressMetadataInterface::ENTITY_TYPE_ADDRESS,
-            self::CUSTOM_ATTRIBUTE_CODE
+            'mobile'
         );
 
         $customAttribute->setData(
@@ -76,3 +70,4 @@ class InstallData implements InstallDataInterface
         $setup->endSetup();
     }
 }
+

@@ -1,6 +1,6 @@
 <?php
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Devchannel_CustomAttribute',
+    'Inatics_CustomAttribute',
     __DIR__
 );
